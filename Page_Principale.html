@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>QuantumPage</title>
+<form
+  action="https://formspree.io/f/xldnelvz"
+  method="POST">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;600&family=Roboto+Slab:wght@400;700&display=swap');
+
+  :root {
+    --primary-color: #4f46e5;
+    --secondary-color: #10b981;
+    --accent-color: #f59e0b;
+    --bg-light: #f9fafb;
+    --bg-dark: #121212;
+    --text-light: #333;
+    --text-dark: #eee;
+    --card-bg-light: #fff;
+    --card-bg-dark: #1f1f1f;
+    --transition: 0.4s ease;
+    --decoration-color-light: #ffffff;
+    --decoration-color-dark: #f59e0b;
+  }
+
+  [data-theme="dark"] {
+    --bg: var(--bg-dark);
+    --text: var(--text-dark);
+    --card-bg: var(--card-bg-dark);
+    --decoration-color: var(--decoration-color-dark);
+  }
+  [data-theme="light"] {
+    --bg: var(--bg-light);
+    --text: var(--text-light);
+    --card-bg: var(--card-bg-light);
+    --decoration-color: var(--decoration-color-light);
+  }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    scroll-behavior: smooth;
+    transition: background-color var(--transition), color var(--transition);
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--card-bg);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: background-color var(--transition);
+  }
+  header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: var(--primary-color);
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--text);
+    margin-left: 1.5rem;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    position: relative;
+  }
+  nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -4px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+  }
+  nav a:hover::after,
+  nav a:focus::after {
+    width: 100%;
+  }
+  nav a:hover,
+  nav a:focus {
+    color: var(--accent-color);
+    outline: none;
+  }
+  main {
+    padding-top: 5rem;
+    max-width: 900px;
+    margin: auto;
+    position: relative;
+    z-index: 10;
+  }
+  section {
+    margin: 3rem 1rem;
+  }
+  h2.section-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+  }
+
+  .tech-decoration {
+    position: fixed;
+    top: 15%;
+    width: 200px;
+    height: 625px;
+    border-radius: 50px 0 0 50px;
+    background:
+      linear-gradient( #0000, var(--decoration-color) 6px, #0000 8px) 10px 0 repeat-y,
+      linear-gradient(90deg, #0000, var(--decoration-color) 6px, #0000 8px) 0 20px repeat-x,
+      radial-gradient(circle at 10px 10px, var(--decoration-color) 4px, #0000 20px);
+    background-size: 20px 40px;
+    box-shadow: 0 0 30px -2px var(--decoration-color);
+    opacity: 0.4;
+    animation: pulseTechColor 6s ease-in-out infinite alternate;
+    z-index: 5;
+  }
+  #left-tech {
+    left: 0;
+  }
+  #right-tech {
+    right: 0;
+    border-radius: 0 50px 50px 0;
+    background:
+      linear-gradient( #0000, var(--decoration-color) 6px, #0000 8px) 110px 0 repeat-y,
+      linear-gradient(90deg, #0000, var(--decoration-color) 6px, #0000 8px) 120px 20px repeat-x,
+      radial-gradient(circle at 110px 10px, var(--decoration-color) 4px, #0000 6px);
+  }
+
+  @keyframes pulseTechColor {
+    0% {opacity: 0.3;}
+    50% {opacity: 0.7;}
+    100% {opacity: 0.3;}
+  }
+
+  #hero {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+  #hero h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+  #hero p {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.25rem;
+    color: var(--text);
+    max-width: 600px;
+    margin: 1rem auto 2rem;
+  }
+  #hero button {
+    background: var(--secondary-color);
+    color: #fff;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 4px 18px var(--secondary-color);
+    transition: background-color 0.3s ease;
+  }
+  #hero button:hover {
+    background: var(--accent-color);
+    box-shadow: 0 6px 22px var(--accent-color);
+  }
+
+  #features {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+  }
+  #features .feature-card {
+    flex: 1 1 280px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgb(0 0 0 / 0.12);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: default;
+    font-family: 'Montserrat', sans-serif;
+  }
+  #features .feature-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 30px var(--accent-color);
+  }
+  #features .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+  #features .feature-title {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+  }
+  #features .feature-desc {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text);
+  }
+
+  #services .service-list {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  #services .service-card {
+    flex-basis: 40%;
+    background: var(--card-bg);
+    border-radius: 14px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.12);
+    padding: 2rem 1.5rem;
+    transition: box-shadow 0.3s ease;
+  }
+  #services .service-card:hover {
+    box-shadow: 0 10px 36px var(--accent-color);
+  }
+  #services .service-icon {
+    font-size: 3.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+  }
+  #services .service-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+  #services .service-desc {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  #team .team-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 1.5rem;
+  }
+  .team-member {
+    background: var(--card-bg);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+  }
+  .team-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 40%;
+    margin: 0 auto 0.8rem;
+    border: 3px solid var(--accent-color);
+    object-fit: cover;
+  }
+  .team-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.4rem;
+  }
+  .team-role {
+    font-size: 1rem;
+    font-style: bold;
+    color: #ff0000;;
+  }
+
+  #faq .faq-item {
+    border-left: 6px solid var(--accent-color);
+    background: var(--card-bg);
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+  }
+  #faq .faq-item:hover {
+    box-shadow: 0 6px 24px var(--accent-color);
+  }
+  #faq .faq-question {
+    font-weight: 700;
+    position: relative;
+    padding-right: 30px;
+  }
+  #faq .faq-question::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    font-weight: 900;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+  }
+  #faq .faq-item.active .faq-question::after {
+    content: "−";
+    transform: translateY(-50%) rotate(180deg);
+    color: var(--accent-color);
+  }
+  #faq .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    margin-top: 0.6rem;
+    font-size: 1rem;
+    line-height: 1.45;
+    color: var(--text);
+  }
+  #faq .faq-item.active .faq-answer {
+    max-height: 300px;
+  }
+
+  #contact form {
+    max-width: 420px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  #contact label {
+    font-weight: 600;
+  }
+  #contact input, #contact textarea {
+    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+    padding: 0.7rem 1.1rem;
+    font-size: 1rem;
+    background: var(--bg);
+    color: var(--text);
+    outline-offset: 2px;
+    transition: border-color 0.3s ease;
+    font-family: 'Open Sans', sans-serif;
+  }
+  #contact input:focus, #contact textarea:focus {
+    border-color: var(--accent-color);
+  }
+  #contact button {
+    margin-top: 1rem;
+    padding: 1rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    border: none;
+    background: var(--secondary-color);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 5px 20px var(--secondary-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  #contact button:hover {
+    background: var(--accent-color);
+    box-shadow: 0 6px 25px var(--accent-color);
+  }
+
+  #modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1500;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  #modal-overlay.active {
+    display: flex;
+    opacity: 1;
+  }
+  #modal {
+    background: var(--card-bg);
+    padding: 2.5rem 3rem;
+    max-width: 450px;
+    border-radius: 16px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    text-align: center;
+    transform: scale(0.85);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    font-family: 'Open Sans', sans-serif;
+  }
+  #modal-overlay.active #modal {
+    transform: scale(1);
+    opacity: 1;
+  }
+  #modal h3 {
+    margin: 0 0 1rem;
+    font-size: 1.75rem;
+    color: var(--primary-color);
+  }
+  #modal p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  #modal button.close-btn {
+    padding: 0.7rem 2rem;
+    border-radius: 30px;
+    border: none;
+    background-color: var(--accent-color);
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #modal button.close-btn:hover {
+    background-color: var(--secondary-color);
+  }
+
+  #theme-toggle {
+    position: fixed;
+    top: 4rem;
+    right: 1rem;
+    width: 45px;
+    height: 45px;
+    background: var(--card-bg);
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 0.15);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.4s, color 0.4s;
+    user-select: none;
+    z-index: 2000;
+  }
+  #theme-toggle svg {
+    width: 26px;
+    height: 26px;
+    fill: var(--primary-color);
+    transition: fill 0.4s, transform 0.6s ease;
+  }
+  #theme-toggle.rotate svg {
+    transform: rotate(360deg);
+  }
+
+  #scroll-top {
+    position: fixed;
+    bottom: 1.8rem;
+    right: 1.8rem;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    display: none;
+    z-index: 2000;
+  }
+  #scroll-top:hover {
+    opacity: 1;
+  }
+
+  #pricing {
+    margin: 3rem 1rem;
+    max-width: 900px;
+  }
+  #pricing h2.section-title {
+    margin-bottom: 1.5rem;
+  }
+  .pricing-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .pricing-card {
+    flex: 1 1 280px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    padding: 2rem 1.8rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 36px var(--accent-color);
+  }
+  .pricing-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+  }
+  .pricing-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+  }
+  .pricing-duration {
+    font-size: 1rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.2rem;
+  }
+  .pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 2rem;
+    font-size: 1rem;
+    color: var(--text);
+  }
+  .pricing-features li {
+    padding: 6px 0;
+    border-bottom: 1px solid var(--primary-color);
+  }
+  .pricing-features li:last-child {
+    border-bottom: none;
+  }
+  .pricing-button {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 20px var(--secondary-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .pricing-button:hover {
+    background: var(--accent-color);
+    box-shadow: 0 6px 25px var(--accent-color);
+  }
+
+  @keyframes fadeInSlideDown {
+    0% {opacity: 0; transform: translateY(-30px);}
+    100% {opacity: 1; transform: translateY(0);}
+  }
+  @keyframes fadeInSlideUp {
+    0% {opacity: 0; transform: translateY(30px);}
+    100% {opacity: 1; transform: translateY(0);}
+  }
+
+  @media (max-width: 900px) {
+    main {
+      max-width: 92vw;
+    }
+    #features {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    #services .service-list {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 500px) {
+    header {
+      padding: 0.75rem 1rem;
+    }
+    nav a {
+      margin-left: 0.5rem;
+      padding: 0.35rem 0.6rem;
+      font-size: 0.85rem;
+    }
+    #hero h1 {
+      font-size: 2.4rem;
+    }
+    #hero p {
+      font-size: 1rem;
+    }
+    #hero button {
+      padding: 0.6rem 1.8rem;
+      font-size: 0.95rem;
+    }
+    #features,
+    #services .service-list {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body data-theme="light" aria-label="Page QuantumPage">
+  <div id="left-tech" class="tech-decoration" aria-hidden="true"></div>
+  <div id="right-tech" class="tech-decoration" aria-hidden="true"></div>
+
+  <header>
+    <h1>QuantumPage</h1>
+    <nav aria-label="Navigation principale">
+      <a href="#hero">Accueil</a>
+      <a href="#about">À propos</a>
+      <a href="#features">Fonctionnalités</a>
+      <a href="#services">Services</a>
+      <a href="#team">Équipe</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <button id="theme-toggle" aria-label="Basculer mode clair/sombre" title="Basculer mode clair/sombre" type="button" tabindex="0">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" >
+      <circle cx="12" cy="12" r="5" />
+      <g stroke="none" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#4f46e5">
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </g>
+    </svg>
+  </button>
+
+  <main>
+    <section id="hero" role="banner" aria-label="Section principale">
+      <h1>QuantumPage</h1>
+      <p>Découvrez un site web moderne, interactif, avec une expérience utilisateur unique, qui prouve notre savoir-faire en création de Pages Web.</p>
+      <button id="open-modal-btn" type="button" aria-controls="modal" aria-expanded="false" aria-haspopup="dialog" tabindex="0">Plus d'informations ?</button>
+    </section>
+
+    <section id="about" aria-label="À propos">
+      <h2 class="section-title">À propos de QuantumPage</h2>
+      <p>QuantumPage est une entreprise web innovante dédiée à créer des expériences en ligne captivantes, dynamiques et accessibles. Notre approche combine design moderne, interactions avancées et technologies web de pointe pour offrir un contenu riche et engageant pour tous vos projets.</p>
+      <p>Que vous soyez un développeur, un créateur de contenu ou un utilisateur cherchant une interface intuitive, QuantumPage offre des services pour vous séduire et vous accompagner dans vos projets web.</p>
+    </section>
+
+    <section id="features" aria-label="Fonctionnalités principales">
+      <h2 class="section-title">Fonctionnalités</h2>
+      <div class="feature-card" tabindex="0">
+        <div class="feature-icon" aria-hidden="true">⚡️</div>
+        <h3 class="feature-title">Animations fluides</h3>
+        <p class="feature-desc">Des animations CSS sophistiquées apportent de la vie à chaque page, garantissant une expérience riche et moderne avec des transitions douces et engageantes.</p>
+      </div>
+      <div class="feature-card" tabindex="0">
+        <div class="feature-icon" aria-hidden="true">🛠️</div>
+        <h3 class="feature-title">Interactions dynamiques</h3>
+        <p class="feature-desc">Des éléments interactifs, comme des boutons animés, des modales élégantes, et des sections réactives qui répondent instantanément à vos actions.</p>
+      </div>
+      <div class="feature-card" tabindex="0">
+        <div class="feature-icon" aria-hidden="true">🎨</div>
+        <h3 class="feature-title">Style contemporain</h3>
+        <p class="feature-desc">Une palette harmonieuse de couleurs et une typographie soigneusement sélectionnée créent une identité visuelle cohérente et élégante.</p>
+      </div>
+      <div class="feature-card" tabindex="0">
+        <div class="feature-icon" aria-hidden="true">🌙</div>
+        <h3 class="feature-title">Mode sombre intégré</h3>
+        <p class="feature-desc">Passez facilement entre un mode clair apaisant et un mode sombre confortable pour naviguer dans toutes conditions lumineuses.</p>
+      </div>
+    </section>
+
+    <section id="services" aria-label="Nos services">
+      <h2 class="section-title">Nos services</h2>
+      <div class="service-list" tabindex="0">
+        <div class="service-card">
+          <div class="service-icon">💻</div>
+          <h3 class="service-title">Développement web personnalisé</h3>
+          <p class="service-desc">Conception et réalisation de sites internet sur mesure, adaptés à vos besoins et optimisés pour tous supports.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🤝</div>
+          <h3 class="service-title">Support et maintenance</h3>
+          <p class="service-desc">Accompagnement continu pour assurer la stabilité, la sécurité et l’actualisation de vos projets digitaux.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" aria-label="Tarifs">
+      <h2 class="section-title">Nos Tarifs</h2>
+      <div class="pricing-container">
+        <div class="pricing-card" tabindex="0">
+          <div class="pricing-title">Offre Basique</div>
+          <div class="pricing-price">€20</div>
+          <div class="pricing-duration">Par projet</div>
+          <ul class="pricing-features">
+            <li>🚧 Page web simple jusqu'à 5 sections</li>
+            <li>📖 Design responsive basique</li>
+            <li>📞 Formulaire de contact intégré</li>
+            <li>❔ Support e-mail en cas de problème/question</li>
+          </ul>
+          <a href="#contact" class="pricing-button" tabindex="0">Choisir</a>
+        </div>
+        <div class="pricing-card" tabindex="0">
+          <div class="pricing-title">Offre Avancée</div>
+          <div class="pricing-price">€30</div>
+          <div class="pricing-duration">Par projet</div>
+          <ul class="pricing-features">
+            <li>🚧 Jusqu'à 10 sections personnalisées</li>
+            <li>📺 Animations et interactions avancées</li>
+            <li>⚡ Optimisation SEO de base</li>
+            <li>❔ Support e-mail et Discord</li>
+          </ul>
+          <a href="#contact" class="pricing-button" tabindex="0">Choisir</a>
+        </div>
+        <div class="pricing-card" tabindex="0">
+          <div class="pricing-title">Offre Premium</div>
+          <div class="pricing-price">€50</div>
+          <div class="pricing-duration">Par projet</div>
+          <ul class="pricing-features">
+            <li>♾️ Pages illimitées et fonctionnalités complètes</li>
+            <li>📏 Design et animations sur-mesure</li>
+            <li>⚡ Optimisation SEO complète</li>
+            <li>🚨 Support prioritaire email + Discord</li>
+          </ul>
+          <a href="#contact" class="pricing-button" tabindex="0">Choisir</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" aria-label="Notre équipe">
+      <h2 class="section-title">Notre équipe</h2>
+      <div class="team-list">
+        <div class="team-member" tabindex="0">
+          <img class="team-photo" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Arno Pedico', lead développeur" />
+          <div class="team-name">Arno Pedico</div>
+          <div class="team-role">PDG et Lead Développeur</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" aria-label="FAQ - Questions fréquentes">
+      <h2 class="section-title">FAQ</h2>
+      <div class="faq-item" tabindex="0">
+        <div class="faq-question">Qu’est-ce que QuantumPage ?</div>
+        <div class="faq-answer">QuantumPage est une plateforme web dédiée à la création d’expériences modernes, interactives et accessibles pour tout type d’utilisateur et de demande.</div>
+      </div>
+      <div class="faq-item" tabindex="0">
+        <div class="faq-question">Comment passer en mode sombre ?</div>
+        <div class="faq-answer">Utilisez le bouton en haut à droite pour basculer instantanément entre les modes clair et sombre selon votre préférence.</div>
+      </div>
+      <div class="faq-item" tabindex="0">
+        <div class="faq-question">Quels services propose QuantumPage ?</div>
+        <div class="faq-answer">Nous proposons développement de sites web, support et maintenance pour garantir un service complet et accompagné dans vos projets.</div>
+      </div>
+    </section>
+
+    <section id="contact" aria-label="Contactez-nous">
+      <h2 class="section-title">Contactez-nous</h2>
+      <p>Envoyez-nous un message ou retrouvez-nous sur les réseaux sociaux. Nous sommes ravis de recevoir vos retours et questions !</p>
+      <form id="contact-form" aria-describedby="contact-desc" novalidate>
+        <label for="name">Nom :</label>
+        <input type="text" id="name" name="name" required placeholder="Votre nom" autocomplete="name" />
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required placeholder="email@example.com" autocomplete="email" />
+
+        <label for="message">Message :</label>
+        <textarea id="message" name="message" rows="4" required placeholder="Votre message"></textarea>
+
+        <button type="submit">Envoyer</button>
+        <p id="contact-desc" aria-live="polite" style="margin-top: 1rem; color: var(--accent-color); font-weight: 600;"></p>
+      </form>
+    </section>
+  </main>
+
+  <div id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+    <div id="modal">
+      <h3 id="modal-title">Plus d'informations</h3>
+      <p id="modal-desc">Si besoin de plus d'informations sur des sujets comme la Confidentialité de vos données ou encore de vos projets, veuillez nous contacter par email dans la rubrique Contact. <br>Nous prenons le sujet de la protection des données personnelles très à coeur.</p>
+      <button class="close-btn" type="button" aria-label="Fermer la fenêtre">Fermer</button>
+    </div>
+  </div>
+
+  <button id="scroll-top" aria-label="Retour en haut" title="Retour en haut" tabindex="0">↑</button>
+
+  <script>
+    const body = document.body;
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleSvg = themeToggleBtn.querySelector('svg');
+    const modalButton = document.getElementById('open-modal-btn');
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalCloseBtn = modalOverlay.querySelector('.close-btn');
+    const scrollTopBtn = document.getElementById('scroll-top');
+    const contactForm = document.getElementById('contact-form');
+    const contactDesc = document.getElementById('contact-desc');
+
+    const leftTech = document.getElementById('left-tech');
+    const rightTech = document.getElementById('right-tech');
+
+    function getPreferredTheme() {
+      const stored = localStorage.getItem('theme');
+      if (stored) return stored;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    function applyTheme(theme) {
+      body.setAttribute('data-theme', theme);
+      if(theme === 'dark'){
+        leftTech.style.background =
+          'linear-gradient(135deg, #4338ca, transparent)';
+        rightTech.style.background =
+          'linear-gradient(315deg, #4338ca, transparent)';
+      } else {
+        leftTech.style.background =
+          'linear-gradient(135deg, #c7d2fe, transparent)';
+        rightTech.style.background =
+          'linear-gradient(315deg, #c7d2fe, transparent)';
+      }
+    }
+    function toggleTheme() {
+      const current = body.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem('theme', next);
+
+      themeToggleBtn.classList.add('rotate');
+      setTimeout(() => {
+        themeToggleBtn.classList.remove('rotate');
+      }, 600);
+    }
+
+    function updateThemeIcon() {
+      if(body.getAttribute('data-theme') === 'dark') {
+        themeToggleSvg.style.fill = '#fcd34d';
+        themeToggleSvg.innerHTML = '<circle cx="12" cy="12" r="5" fill="none" stroke="#fcd34d" stroke-width="2"/>' +
+        '<line x1="12" y1="1" x2="12" y2="3" stroke="#fcd34d" stroke-width="2"/>' +
+        '<line x1="12" y1="21" x2="12" y2="23" stroke="#fcd34d" stroke-width="2"/>' +
+        '<line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="#fcd34d" stroke-width="2"/>' +
+        '<line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="#fcd34d" stroke-width="2"/>' +
+        '<line x1="1" y1="12" x2="3" y2="12" stroke="#fcd34d" stroke-width="2"/>' +
+        '<line x1="21" y1="12" x2="23" y2="12" stroke="#fcd34d" stroke-width="2"/>' +
+        '<line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="#fcd34d" stroke-width="2"/>' +
+        '<line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="#fcd34d" stroke-width="2"/>';
+      } else {
+        themeToggleSvg.style.fill = 'var(--primary-color)';
+        themeToggleSvg.innerHTML = '<circle cx="12" cy="12" r="5" />' +
+        '<g stroke="none" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="var(--primary-color)">'+
+        '<line x1="12" y1="1" x2="12" y2="3"/>' +
+        '<line x1="12" y1="21" x2="12" y2="23"/>' +
+        '<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>' +
+        '<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>' +
+        '<line x1="1" y1="12" x2="3" y2="12"/>' +
+        '<line x1="21" y1="12" x2="23" y2="12"/>' +
+        '<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>' +
+        '<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>' +
+        '</g>';
+      }
+    }
+
+    function openModal() {
+      modalOverlay.classList.add('active');
+      modalButton.setAttribute('aria-expanded', 'true');
+      modalCloseBtn.focus();
+    }
+    function closeModal() {
+      modalOverlay.classList.remove('active');
+      modalButton.setAttribute('aria-expanded', 'false');
+      modalButton.focus();
+    }
+
+    function checkScrollTopButton() {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.style.display = 'block';
+      } else {
+        scrollTopBtn.style.display = 'none';
+      }
+    }
+
+    function scrollToTop() {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const name = contactForm.name.value.trim();
+      const email = contactForm.email.value.trim();
+      const message = contactForm.message.value.trim();
+      if (!name) {
+        contactDesc.textContent = 'Veuillez entrer votre nom.';
+        contactForm.name.focus();
+        return;
+      }
+      if (!validateEmail(email)) {
+        contactDesc.textContent = 'Veuillez entrer un email valide.';
+        contactForm.email.focus();
+        return;
+      }
+      if (!message) {
+        contactDesc.textContent = 'Veuillez écrire un message.';
+        contactForm.message.focus();
+        return;
+      }
+      contactDesc.textContent = 'Merci pour votre message, nous vous répondrons bientôt !';
+      contactForm.reset();
+    }
+
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if(target) {
+          target.scrollIntoView({behavior: 'smooth'});
+        }
+      });
+    });
+
+    function toggleFAQ(event) {
+      const faqItem = event.currentTarget.parentElement;
+      faqItem.classList.toggle('active');
+    }
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', toggleFAQ);
+      q.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleFAQ(e);
+        }
+      });
+    });
+
+    function onKeyDown(e) {
+      if(e.key === 'Escape') {
+        if(modalOverlay.classList.contains('active')) {
+          closeModal();
+        }
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      applyTheme(getPreferredTheme());
+      updateThemeIcon();
+
+      themeToggleBtn.addEventListener('click', () => {
+        toggleTheme();
+        updateThemeIcon();
+      });
+
+      modalButton.addEventListener('click', openModal);
+      modalCloseBtn.addEventListener('click', closeModal);
+      modalOverlay.addEventListener('click', e => {
+        if (e.target === modalOverlay) {
+          closeModal();
+        }
+      });
+
+      window.addEventListener('scroll', () => {
+        checkScrollTopButton();
+      });
+      checkScrollTopButton();
+
+      scrollTopBtn.addEventListener('click', scrollToTop);
+
+      contactForm.addEventListener('submit', handleFormSubmit);
+      window.addEventListener('keydown', onKeyDown);
+    });
+  </script>
+</body>
+</html>
+
